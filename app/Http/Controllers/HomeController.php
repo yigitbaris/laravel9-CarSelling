@@ -29,5 +29,17 @@ class HomeController extends Controller
             'number' => $number
         ]);
     } 
+
+    public function   save(Request $request){
+        //echo "save Function";
+        //echo "<br>name :",$_REQUEST['fname'];
+        //echo "<br>Last name :",$_REQUEST['lname'];
+        //return view('home.test2',
+        [
+            'fname' => $_REQUEST['fname'],
+            'lname' => $_REQUEST['lname']
+        ]);
+    } 
+    }
     
 } 
