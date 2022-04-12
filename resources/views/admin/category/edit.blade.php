@@ -14,23 +14,24 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <form role="form" action="/admin/category/store" method="post">
+                    <form role="form" action="/admin/category/update/{{$data->id}}" method="post">
                         @csrf
                         <div class="form-group">
                             <label for="exampleInputName1"><h4 class="card-title">Title</h4></label>
-                            <input type="text" class="form-control" name="title" placeholder="Title">
+                            <input type="text" class="form-control" name="title" value="{{$data->title}}">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail3"><h4 class="card-title">Keywords</h4></label>
-                            <input type="text" class="form-control" name="keywords" placeholder="Keywords">
+                            <input type="text" class="form-control" name="keywords" value="{{$data->keywords}}">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword4"><h4 class="card-title">Description</h4></label>
-                            <input type="text" class="form-control" name="description" placeholder="Description">
+                            <input type="text" class="form-control" name="description" value="{{$data->description}}">
                         </div>
                         <div class="form-group">
                             <label for="exampleSelectGender"><h4 class="card-title">Status</h4></label>
                             <select class="form-control" name="status">
+                                <option selected>{{$data->status}}</option>
                                 <option>True</option>
                                 <option>False</option>
                             </select>
@@ -45,7 +46,7 @@
                                 <span class="input-group-append">
                     <button type="button" class="btn btn-primary">Upload</button>
                   </span>
-                  <button type="submit" style="border-style:solid;background-color:red; border: 2px solid red; border-radius: 6px; padding: 5px;height:33px">Save</button>
+                  <button type="submit" class="btn btn-danger">Update Data</button>
                             </div>
                         </div>
                     </form>
