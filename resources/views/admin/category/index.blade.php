@@ -6,13 +6,14 @@
 <!--content-->
 <main class="content">
 		<div class="container-fluid p-0">
-
-			<h1 class="h3 mb-3">Category List</h1>
-
+			<a href="/admin/category/create"class="btn btn-primary">Add Category</a>
+			
 			<div class="row">
+			<br>
 				<div class="col-12">
 					<div class="card">
 					<div class="card-body">
+						
 			<h4 class="card-title">Category List</h4>
 			<div class="table-responsive">
 				<table class="table">
@@ -40,7 +41,8 @@
 				<td>{{$rs->image}}</td>
 				<td>{{$rs->status}}</td>
 				<td><a href="/admin/category/edit/{{$rs->id}}"class="btn btn-primary">Edit </a></td>
-				<td><a href="/admin/category/delete/{{$rs->id}}"class="btn btn-danger">Delete </a></td>
+				<td><a href="/admin/category/delete/{{$rs->id}}"class="btn btn-danger"
+						onclick="return confirm('Deleting !! Are you sure?')">Delete </a></td>
 				<td><a href="/admin/category/show/{{$rs->id}}"class="btn btn-success">Show </a></td>
 				<td><label class="badge badge-danger">Pending</label></td>
 				</tr>
