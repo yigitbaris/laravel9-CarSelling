@@ -108,6 +108,6 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         //
-        echo "destroy";
+        return view('admin.category');
     }
 }
