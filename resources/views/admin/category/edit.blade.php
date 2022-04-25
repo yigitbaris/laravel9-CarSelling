@@ -3,15 +3,12 @@
 @section('title', 'Edit Category: {{$data->title}}')
  
 @section('content')
-	<!--content-->
-    <main class="content">
-
-<div class="container-fluid p-0">
-
+<div class="dashboard-wrapper">
+            <div class="container-fluid dashboard-content">
+                
     <h1 class="h3 mb-3">Edit Category: {{$data->title}}</h1>
-
-    <div class="row">
-        <div class="col-12">
+                <div class="row">
+                <div class="col-12">
             <div class="card">
                 <div class="card-body">
                     <form role="form" action="/admin/category/update/{{$data->id}}" method="post">
@@ -53,8 +50,6 @@
                 </div>
             </div>
         </div>
-    </div>
-
-</div>
-</main>
+                </div>
+            </div>
 @endsection

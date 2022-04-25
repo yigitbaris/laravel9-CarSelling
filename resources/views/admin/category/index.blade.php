@@ -8,7 +8,7 @@
 	<div class="container-fluid dashboard-content">
 		<div class="row">
 		<div class="card-body">
-		<h4 class="card-title">Category List</h4>
+		<a href="/admin/category/create"class="btn btn-rounded btn-secondary">Add Category</a>
 							<table class="table table-striped" style="background-color: white;">
 								<thead>
 									<tr>
