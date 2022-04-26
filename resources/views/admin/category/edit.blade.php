@@ -11,7 +11,7 @@
                 <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <form role="form" action="/admin/category/update/{{$data->id}}" method="post">
+                    <form role="form" action="/admin/category/update/{{$data->id}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <label for="exampleInputName1"><h4 class="card-title">Title</h4></label>
@@ -35,16 +35,13 @@
                         </div>
                         <br>
                         <div class="form-group">
-                            <label style="height:33px  ;border-style:solid;background-color:beige; border: 2px solid bisque; border-radius: 8px; padding: 5px;">Image</label>
-                            <input type="file" name="image" class="file-upload-default" style="text-align: center; height:35px  ;border-style:solid;background-color:gainsboro; border: 2px solid gainsboro; border-radius: 8px; padding: 5px;"   >
-                            <br>
-                            <div class="input-group col-xs-12" style="max-width: 1000px;">
-                                <input type="text" class="form-control file-upload-info" disabled="" placeholder="Choose Image">
-                                <span class="input-group-append">
-                    <button type="button" class="btn btn-primary">Upload</button>
-                  </span>
-                  <button type="submit" class="btn btn-danger">Update Data</button>
-                            </div>
+                        <label style="height:33px  ;border-style:solid;background-color:beige; border: 2px solid bisque; border-radius: 8px; padding: 5px;">Choose Image</label>
+                        <input type="file" name="image" class="file-u   pload-default" style="text-align: center; height:35px  ;border-style:solid;background-color:gainsboro; border: 2px solid gainsboro; border-radius: 8px; padding: 5px;"   >
+                        <div class="input-group col-xs-12" style="max-width: 1000px;">
+                            <span class="input-group-append">
+                
+              </span>
+              <button type="submit" class="btn btn-primary">Save</button> 
                         </div>
                     </form>
                 </div>
