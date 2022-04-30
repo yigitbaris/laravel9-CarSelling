@@ -18,10 +18,10 @@
                         <a class="nav-link" href="/admin" aria-expanded="false"><i class="fas fa-home"></i>Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin/menu" aria-expanded="false"><i class="fas fa-list-ul"></i>Menus</a>
+                        <a class="nav-link" href="/admin/category" aria-expanded="false"><i class="fas fa-list-ul"></i>Category</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin/content" aria-expanded="false"><i class="far fa-edit"></i></i>Contents</a>
+                        <a class="nav-link" href="/admin/content" aria-expanded="false"><i class="far fa-edit"></i></i>Products</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/admin/comment" aria-expanded="false"><i class=" far fa-comments"></i>Comments</a>
