@@ -5,8 +5,7 @@
     <div class="menu-list">
         <nav class="navbar navbar-expand-lg navbar-light">
             <a class="d-xl-none d-lg-none" href="#">Dashboard</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -21,7 +20,7 @@
                         <a class="nav-link" href="/admin/category" aria-expanded="false"><i class="fas fa-list-ul"></i>Category</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin/content" aria-expanded="false"><i class="far fa-edit"></i></i>Products</a>
+                        <a class="nav-link" href="/admin/cars" aria-expanded="false"><i class="far fa-edit"></i></i>Cars</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/admin/comment" aria-expanded="false"><i class=" far fa-comments"></i>Comments</a>

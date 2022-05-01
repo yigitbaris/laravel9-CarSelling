@@ -13,7 +13,6 @@ return new class extends Migration
      */
     public function up()
     {
-        if(!Schema::hasTable('sessions')){
 
         Schema::create('cars', function (Blueprint $table) {
             $table->id();
@@ -23,7 +22,7 @@ return new class extends Migration
             $table->string('keywords')->nullable();
             $table->string('description')->nullable();
             $table->string('image')->nullable();
-            $table->string('detail')->nullable();
+            $table->text('detail')->nullable();
             $table->float('price')->nullable();
             $table->integer('year')->nullable();
             $table->string('fuel')->nullable();
@@ -33,7 +32,7 @@ return new class extends Migration
             $table->timestamps();
         });
     }
-}
+
 
 
     /**
