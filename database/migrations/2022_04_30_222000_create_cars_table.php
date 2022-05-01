@@ -13,6 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
+        if(!Schema::hasTable('sessions')){
+
         Schema::create('cars', function (Blueprint $table) {
             $table->id();
             $table->foreignId('category_id')->nullable();
@@ -27,11 +29,12 @@ return new class extends Migration
             $table->string('fuel')->nullable();
             $table->double('kilometer')->nullable();
             $table->integer('enginepower')->nullable();
-            $table->string('gear')->nullable();
             $table->string('status',6)->default('False');
             $table->timestamps();
         });
     }
+}
+
 
     /**
      * Reverse the migrations.
