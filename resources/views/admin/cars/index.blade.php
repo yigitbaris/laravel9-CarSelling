@@ -13,31 +13,35 @@
 					<thead>
 						<tr>
 							<th scope="col" style="width: 10px;">Id</th>
-							<th scope="col">Category</th>
+							<th scope="col" style="width: 100px;">Category</th>
 							<th scope="col">Title</th>
 							<th scope="col">Price</th>
 							<th scope="col">Year</th>
-							<th scope="col">Title</th>
-							<th scope="col">Title</th>
+							<th scope="col">Fuel</th>
+							<th scope="col">Kilometer</th>
+							<th scope="col">Engine Power</th>
 							<th scope="col">Image</th>
 							<th scope="col">Status</th>
-							<th scope="col">Edit</th>
-							<th scope="col">Delete</th>
-							<th scope="col">Show</th>
+							<th scope="col" style="width: 50px;">Edit</th>
+							<th scope="col" style="width: 50px;">Delete</th>
+							<th scope="col" style="width: 50px;">Show</th>
 						</tr>
 					</thead>
 					<tbody>
 						@foreach ($data as $rs)
 						<tr>
 							<td>{{$rs->id}}</td>
-							<td>{{\App\Http\Controllers\AdminPanel\CategoryController::getParentsTree($rs, $rs->title)}}</td>
+							<td>{{\App\Http\Controllers\AdminPanel\CategoryController::getParentsTree($rs->category,$rs->category->title)}}</td>
 							<td>{{$rs->title}}</td>
 							<td>{{$rs->price}}</td>
 							<td>{{$rs->year}}</td>
-							<td>{{$rs->title}}</td>
+							<td>{{$rs->fuel}}</td>
+							<td>{{$rs->kilometer}}</td>
+							<td>{{$rs->enginepower}}</td>
+
 							<td>
 								@if ($rs->image)
-								<img src="{{Storage::url($rs->image)}}" style="height: 40px">
+								<img src="{{Storage::url($rs->image)}}" style="height: 60px">
 								@endif
 							</td>
 							<td>{{$rs->status}}</td>

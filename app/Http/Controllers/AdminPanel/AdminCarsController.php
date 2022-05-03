@@ -20,7 +20,7 @@ class AdminCarsController extends Controller
     public function index()
     {
         $data = Cars::all();
-        return view('admin.cars.index', [
+        return view('admin.cars.index',[
             'data' => $data
         ]);
     }
@@ -140,7 +140,10 @@ class AdminCarsController extends Controller
     {
         //
         $data = Cars::find($id);
-        Storage::delete($data->image);
+        if($data->image && Storage::disk('public')->exists($data->image)){
+            Storage::delete($data->image);
+        }
+        
         $data->delete();
         return redirect('admin/cars');
     }

@@ -1,27 +1,24 @@
 @extends('layouts.adminbase')
 
-@section('title', 'Edit Category: {{$data->title}}')
+@section('title', 'Edit Car: {{$data->title}}')
 
 @section('content')
 <div class="dashboard-wrapper">
     <div class="container-fluid dashboard-content">
 
-        <h1 class="h3 mb-3">Edit Category: {{$data->title}}</h1>
+        <h1 class="h3 mb-3">Edit Car: {{$data->title}}</h1>
         <div class="row">
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <form role="form" action="{{route('admin.category.update',['id'=>$data->id])}}" method="post" enctype="multipart/form-data">
+                        <form role="form" action="{{route('admin.cars.update',['id'=>$data->id])}}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label>Parent Category</label>
 
-                                <select class="form-control select2" name="parent_id">
-                                    <option value="0" selected="selected">Main Category</option>
+                                <select class="form-control select2" name="category_id">
                                     @foreach($datalist as $rs)
-                                    <option value="{{ $rs->id }}" @if ($rs->id == $data->parent_id) selected="selected" @endif>
-                                        {{\App\Http\Controllers\AdminPanel\CategoryController::getParentsTree($rs,$rs->title) }}
-                                    </option>
+                                    <option value="{{ $rs->id }}">{{\App\Http\Controllers\AdminPanel\CategoryController::getParentsTree($rs,$rs->title) }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -44,24 +41,70 @@
                                 <input type="text" class="form-control" name="description" value="{{$data->description}}">
                             </div>
                             <div class="form-group">
+                                <label for="exampleInputPassword4">
+                                    <h4 class="card-title">Price</h4>
+                                </label>
+                                <input type="number" class="form-control" name="price" value="{{$data->price}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword4">
+                                    <h4 class="card-title">Year</h4>
+                                </label>
+                                <input type="number" class="form-control" name="year" value="{{$data->year}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleSelectElectric">
+                                    <h4 class="card-title">Fuel</h4>
+                                </label>
+                                <select class="form-control" name="fuel">
+                                    <option disabled selected hidden>{{$data->fuel}}</option>
+                                    <option>Gasoline</option>
+                                    <option>Gas & LPG</option>
+                                    <option>Diesel</option>
+                                    <option>Hybrid</option>
+                                    <option>Electric</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword4">
+                                    <h4 class="card-title">Kilometer</h4>
+                                </label>
+                                <input type="number" class="form-control" name="kilometer" value="{{$data->kilometer}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword4">
+                                    <h4 class="card-title">Engine Power</h4>
+                                </label>
+                                <input type="number" class="form-control" name="enginepower" value="{{$data->enginepower}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword4">
+                                    <h4 class="card-title">Detail</h4>
+                                    <textarea class="form-control" name="detail">
+                                    {{$data->detail}}
+                                    </textarea>
+                                </label>
+
+                            </div>
+                            <div class="form-group">
                                 <label for="exampleSelectGender">
                                     <h4 class="card-title">Status</h4>
                                 </label>
                                 <select class="form-control" name="status">
-                                    <option selected>{{$data->status}}</option>
+                                    <option>{{$data->status}}</option>
                                     <option>True</option>
                                     <option>False</option>
                                 </select>
                             </div>
                             <br>
                             <div class="form-group">
-                                <label style="height:33px  ;border-style:solid;background-color:beige; border: 2px solid bisque; border-radius: 8px; padding: 5px;">Choose Image</label>
-                                <input type="file" name="image" class="file-u   pload-default" style="text-align: center; height:35px  ;border-style:solid;background-color:gainsboro; border: 2px solid gainsboro; border-radius: 8px; padding: 5px;">
+                                <label style="height:33px  ;border-style:solid;background-color:beige; border: 2px solid bisque; border-radius: 8px; padding: 5px;">Choose İmage</label>
+                                <input type="file" selected="{{$data->image}}"  name="image" class="file-u   pload-default" style="text-align: center; height:35px  ;border-style:solid;background-color:gainsboro; border: 2px solid gainsboro; border-radius: 8px; padding: 5px;">
                                 <div class="input-group col-xs-12" style="max-width: 1000px;">
                                     <span class="input-group-append">
 
                                     </span>
-                                    <button type="submit" class="btn btn-primary">Save</button>
+                                    <button type="submit" class="btn btn-primary">Update Data</button>
                                 </div>
                         </form>
                     </div>
