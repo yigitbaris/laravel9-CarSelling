@@ -8,7 +8,9 @@
 	<div class="container-fluid dashboard-content">
 		<div class="row">
 			<div class="card-body">
+				
 				<a href="{{route('admin.category.create')}}" class="btn btn-rounded btn-secondary">Add Category</a>
+				<h5 class="card-header">Category Table</h5>
 				<table class="table table-striped" style="background-color: white;">
 					<thead>
 						<tr>
