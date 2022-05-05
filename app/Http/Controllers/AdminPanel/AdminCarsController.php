@@ -48,7 +48,7 @@ class AdminCarsController extends Controller
     {
         //
         $data = new Cars();
-        $data->category_id = $request->category_id;
+        $data->category_id = 3;//$request->category_id;
         $data->user_id = 0; //$request->category_id;
         $data->title = $request->title;
         $data->keywords = $request->keywords;
