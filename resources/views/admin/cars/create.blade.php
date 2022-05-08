@@ -2,6 +2,10 @@
 
 @section('title', 'Add Category')
 
+@section('head')
+<script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/ckeditor.js"></script>
+@endsection
+
 @section('content')
 <!--content-->
 <div class="dashboard-wrapper">
@@ -61,7 +65,7 @@
                                 </label>
                                 <select class="form-control" name="fuel" placeholder="Fuel type">
                                     <option disabled selected hidden>Select Fuel Type</option>
-                                    <option >Gasoline</option>
+                                    <option>Gasoline</option>
                                     <option>Gas & LPG</option>
                                     <option>Diesel</option>
                                     <option>Hybrid</option>
@@ -81,12 +85,19 @@
                                 <input type="number" class="form-control" name="enginepower" value="0">
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputPassword4">
-                                    <h4 class="card-title">Detail</h4>
-                                    <textarea class="form-control" name="detail">
+                                <label for="exampleInputPassword4">Detail Inf.</label>
+                                    <textarea class="form-control" id="detail" name="detail">
                                     </textarea>
-                                </label>
-                                
+                                <script>
+                                    ClassicEditor
+                                        .create(document.querySelector('#detail'))
+                                        .then(editor => {
+                                            console.log(editor);
+                                        })
+                                        .catch(error => {
+                                            console.error(error);
+                                        });
+                                </script>
                             </div>
                             <div class="form-group">
                                 <label for="exampleSelectGender">

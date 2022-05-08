@@ -2,6 +2,10 @@
 
 @section('title', 'Edit Car: {{$data->title}}')
 
+@section('head')
+<script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/ckeditor.js"></script>
+@endsection
+
 @section('content')
 <div class="dashboard-wrapper">
     <div class="container-fluid dashboard-content">
@@ -80,9 +84,19 @@
                             <div class="form-group">
                                 <label for="exampleInputPassword4">
                                     <h4 class="card-title">Detail</h4>
-                                    <textarea class="form-control" name="detail">
+                                    <textarea class="form-control" id="detail" name="detail">
                                     {{$data->detail}}
                                     </textarea>
+                                    <script>
+                                    ClassicEditor
+                                        .create(document.querySelector('#detail'))
+                                        .then(editor => {
+                                            console.log(editor);
+                                        })
+                                        .catch(error => {
+                                            console.error(error);
+                                        });
+                                </script>
                                 </label>
 
                             </div>
