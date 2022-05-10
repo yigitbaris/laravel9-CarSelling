@@ -60,8 +60,8 @@
                                 <label for="exampleSelectElectric">
                                     <h4 class="card-title">Fuel</h4>
                                 </label>
-                                <select class="form-control" name="fuel">
-                                    <option disabled selected hidden>{{$data->fuel}}</option>
+                                <select class="form-control" name="fuel" >
+                                    <option selected >{{$data->fuel}}</option>
                                     <option>Gasoline</option>
                                     <option>Gas & LPG</option>
                                     <option>Diesel</option>

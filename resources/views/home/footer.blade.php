@@ -83,6 +83,14 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="{{asset('assets')}}/js/google-map.js"></script>
   <script src="{{asset('assets')}}/js/main.js"></script>
+
+
+      <!-- admin template-->
+<script src="{{asset('assets')}}/admin/assets/vendor/jquery/jquery-3.3.1.min.js"></script>
+<script src="{{asset('assets')}}/admin/assets/vendor/bootstrap/js/bootstrap.bundle.js"></script>
+<script src="{{asset('assets')}}/admin/assets/vendor/slimscroll/jquery.slimscroll.js"></script>
+<script src="{{asset('assets')}}/admin/assets/libs/js/main-js.js"></script>
+
   
     
   
