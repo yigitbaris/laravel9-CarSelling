@@ -30,7 +30,7 @@
                   <span class="cat">{{\App\Http\Controllers\AdminPanel\CategoryController::getParentsTree($rs->category, $rs->category->title)}}</span>
                   <p class="price ml-auto">${{$rs->price}}</p>
                 </div>
-                <p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Book now</a> <a href="{{route('cars',['id'=> $rs->id])}}" class="btn btn-secondary py-2 ml-1">Details</a></p>
+                <p class="d-flex mb-0 d-block"> <a href="{{route('cars',['id'=> $rs->id])}}" class="btn btn-secondary py-2 ml-1">Details</a></p>
               </div>
             </div>
 
@@ -68,6 +68,7 @@
       @foreach($sliderdata as $rs)
       <div class="item">
         <div class="car-wrap rounded ftco-animate">
+        <p class="d-flex mb-0 d-block"> <a href="{{route('cars',['id'=> $rs->id])}}" class="btn btn-secondary py-2 ml-1">Details</a></p>
           <div class="img rounded d-flex align-items-end justify-content-center align-items-center" style="background-image: url({{Storage::url($rs->image)}});width:390px;height:200px;"></div>
           <div class="d-flex mb-3">
           </div>
