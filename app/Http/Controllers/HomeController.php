@@ -1,16 +1,23 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Http\Controllers\Controller;
 use App\Models\Category;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\DB;
 use App\Models\Cars;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class HomeController extends Controller
 {
+    public static function maincategorylist(){
+        return Category::where('parent_id','=',0)->with('children')->get();
 
+
+    }
+    
+    //
     public function index()
     {
         $page='home';

@@ -1,55 +1,29 @@
 <!-- ---------DÜZGÜN GİBİ-------------------- -->
 <style>
-    /* Dropdown Button */
-    .dropbtn {
-        background-color: transparent;
-        color: white;
-        padding: 16px;
-        font-size: 16px;
-        border: none;
-    }
-
-    /* The container <div> - needed to position the dropdown content */
-    .dropdown {
+    .dropdown-menu li {
         position: relative;
-        display: inline-block;
     }
 
-    /* Dropdown Content (Hidden by Default) */
-    .dropdown-content {
+    .dropdown-menu .dropdown-submenu {
         display: none;
         position: absolute;
-        background-color: gray;opacity: 0.9;
-        min-width: 160px;
-        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-        z-index: 1;
+        left: 100%;
+        top: -7px;
     }
 
-    /* Links inside the dropdown */
-    .dropdown-content a {
-        color: black;
-        padding: 12px 16px;
-        text-decoration: none;
+    .dropdown-menu .dropdown-submenu-left {
+        right: 100%;
+        left: auto;
+    }
+
+    .dropdown-menu>li:hover>.dropdown-submenu {
         display: block;
-    }
-
-    /* Change color of dropdown links on hover */
-    .dropdown-content a:hover {
-        background-color: #ddd;
-    }
-
-    /* Show the dropdown menu on hover */
-    .dropdown:hover .dropdown-content {
-        display: block;
-    }
-
-    /* Change the background color of the dropdown button when the dropdown content is shown */
-    .dropdown:hover .dropbtn {
-        background-color: transparent;
     }
 </style>
 <!-- ----------------------------- -->
 
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container">
         <a class="navbar-brand" href="index.html">Car<span>Book</span></a>
@@ -58,7 +32,9 @@
         </button>
 
         <!--NAV beginning -->
-
+        @php
+            $mainCategories=\App\Http\Controllers\HomeController::maincategorylist()
+        @endphp
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
@@ -67,18 +43,53 @@
 
                 <!--deneme alanı -->
 
-                <div class="dropdown">
-                    <button class="dropbtn">Dropdown</button>
-                    <div class="dropdown-content">
-                        <a href="#">Link 1</a>
-                        <a href="#">Link 2</a>
-                        <a href="#">Link 3</a>
-                
+                <nav class="nav-item">
+                    <div class="container-fluid">
+                        <ul class="navbar-nav">
+                            <!-- Dropdown -->
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                                    Category
+                                </a>
+                                @foreach($mainCategories as $rs)
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <li>
+                                        <a class="dropdown-item" href="#">Action</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#">Another action</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#">
+                                            Submenu &raquo;
+                                        </a>
+                                        <ul class="dropdown-menu dropdown-submenu">
+                                            <li>
+                                                <a class="dropdown-item" href="#">Submenu item 1</a>
+                                            </li>
+                                            
+                                            <li>
+                                                <a class="dropdown-item" href="#">Submenu item 3 &raquo; </a>
+                                                <ul class="dropdown-menu dropdown-submenu">
+                                                    <li>
+                                                        <a class="dropdown-item" href="#">Multi level 1</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item" href="#">Submenu item 4</a>
+                                            </li>
+                                            @endforeach
 
+                                        </ul>
+                                    </li>
+                                </ul>
+
+                            </li>
+                        </ul>
                     </div>
-                </div>
-
-                                <!--deneme alanı -->
+                </nav>
+                <!--deneme alanı -->
 
 
 
@@ -90,5 +101,18 @@
         </div>
     </div>
 </nav>
+
+
+<script>
+    $(document).ready(function() {
+        $('.dropdown-submenu a.test').on("click", function(e) {
+            $(this).next('ul').toggle();
+            e.stopPropagation();
+            e.preventDefault();
+        });
+    });
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 <!-- END nav -->
