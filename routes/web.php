@@ -44,6 +44,8 @@ Route::post('/save', [HomeController::class, 'save'])->name('save');
 
 Route::get('/cars/{id}', [HomeController::class, 'cars'])->name('cars');
 
+Route::get('/categorycars/{id}/{slug}', [HomeController::class, 'categorycars'])->name('categorycars');
+
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

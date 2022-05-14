@@ -32,59 +32,45 @@
         </button>
 
         <!--NAV beginning -->
-        @php
-            $mainCategories=\App\Http\Controllers\HomeController::maincategorylist()
-        @endphp
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
                 <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
                 <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
-
+                
                 <!--deneme alanı -->
-
+                
                 <nav class="nav-item">
                     <div class="container-fluid">
                         <ul class="navbar-nav">
                             <!-- Dropdown -->
+                            @php
+                                $mainCategories=\App\Http\Controllers\HomeController::maincategorylist()
+                            @endphp
+
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
                                     Category
                                 </a>
-                                @foreach($mainCategories as $rs)
+                                
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <li>
-                                        <a class="dropdown-item" href="#">Action</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">Another action</a>
-                                    </li>
-                                    <li>
+                                    @foreach($mainCategories as $rs)
+                                    <li class="nav-item dropdown">
                                         <a class="dropdown-item" href="#">
-                                            Submenu &raquo;
+                                            {{$rs->title}} &raquo;
                                         </a>
                                         <ul class="dropdown-menu dropdown-submenu">
-                                            <li>
-                                                <a class="dropdown-item" href="#">Submenu item 1</a>
-                                            </li>
-                                            
-                                            <li>
-                                                <a class="dropdown-item" href="#">Submenu item 3 &raquo; </a>
-                                                <ul class="dropdown-menu dropdown-submenu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">Multi level 1</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#">Submenu item 4</a>
-                                            </li>
-                                            @endforeach
 
+                                                    @if(count($rs->children))
+                                                    @include('home.categorytree',['children'=>$rs->children])
+                                                    @endif
                                         </ul>
+                                    
+                                    
                                     </li>
+                                    @endforeach
                                 </ul>
-
+                                
                             </li>
                         </ul>
                     </div>
