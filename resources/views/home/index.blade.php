@@ -62,22 +62,7 @@
   </div>
 </section>
 
-<div class="row">
-  <div class="col-md-12">
-    <div class="carousel-car owl-carousel">
-      @foreach($sliderdata as $rs)
-      <div class="item">
-        <div class="car-wrap rounded ftco-animate">
-        <p class="d-flex mb-0 d-block"> <a href="{{route('cars',['id'=> $rs->id])}}" class="btn btn-secondary py-2 ml-1">Details</a></p>
-          <div class="img rounded d-flex align-items-end justify-content-center align-items-center" style="background-image: url({{Storage::url($rs->image)}});width:390px;height:200px;"></div>
-          <div class="d-flex mb-3">
-          </div>
-        </div>
-      </div>
-      @endforeach
-    </div>
-  </div>
-</div>
+
 <section class="ftco-section">
   <div class="container">
     <div class="row justify-content-center mb-5">
