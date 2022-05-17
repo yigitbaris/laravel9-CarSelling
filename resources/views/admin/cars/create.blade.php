@@ -23,9 +23,11 @@
                             <div class="form-group">
                                 <label>Parent Category</label>
 
-                                <select class="form-control select2" name="cetegory_id">
+                                <select class="form-control select2" name="category_id">
                                     @foreach($data as $rs)
-                                    <option value="{{ $rs->id }}">{{\App\Http\Controllers\AdminPanel\CategoryController::getParentsTree($rs,$rs->title) }}</option>
+                                    <option value="{{ $rs->id }}">
+                                        {{\App\Http\Controllers\AdminPanel\CategoryController::getParentsTree($rs,$rs->title) }}
+                                    </option>
                                     @endforeach
                                 </select>
                             </div>

@@ -65,8 +65,6 @@
                                                     @include('home.categorytree',['children'=>$rs->children])
                                                     @endif
                                         </ul>
-                                    
-                                    
                                     </li>
                                     @endforeach
                                 </ul>

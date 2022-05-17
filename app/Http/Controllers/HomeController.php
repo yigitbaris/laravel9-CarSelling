@@ -7,7 +7,6 @@ use App\Models\Category;
 use App\Models\Cars;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
 
 class HomeController extends Controller
 {
@@ -15,8 +14,8 @@ class HomeController extends Controller
         return Category::where('parent_id','=',0)->with('children')->get();
 
 
-    }
-    
+    }    
+
     //
     public function index()
     {
@@ -51,9 +50,4 @@ class HomeController extends Controller
         ]);
     }
 
-    public function test()
-    {
-
-        return  view('home.test');
-    }
 }

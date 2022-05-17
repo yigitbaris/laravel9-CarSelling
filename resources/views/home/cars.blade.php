@@ -176,8 +176,11 @@
 
                     <div class="slide_buttons">
                     </div>
+<br>
+<br>
+<br>
 
-                    <div class="directional_nav">
+                    <div class="">
                         <div class="previous_btn" title="Previous">
                             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="65px" height="65px" viewBox="-11 -11.5 65 66">
                                 <g>
@@ -202,9 +205,7 @@
                     </div><!-- End // .directional_nav -->
                     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
                     <!-- deneme alanı -->
-
-
-
+                    
                     <div class="text text-center">
                         <span class="subheading">{{$data->category->title}}</span>
                         <h2>{{$data->title}}</h2>

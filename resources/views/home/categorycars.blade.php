@@ -21,7 +21,7 @@
 <section class="ftco-section bg-light">
     <div class="container">
         <div class="row">
-            @foreach($cars as $rs)
+           @foreach($cars as $rs)
             <div class="col-md-4">
                 <div class="car-wrap rounded ftco-animate">
                     <div class="img rounded d-flex align-items-end" style="background-image: url({{Storage::url($rs->image)}});width:350px;height:270px;">
@@ -29,7 +29,7 @@
                     <div class="text">
                         <h2 class="mb-0"><a href="#">{{$rs->title}}</a></h2>
                         <div class="d-flex mb-3">
-                            <span class="cat">{{\App\Http\Controllers\AdminPanel\CategoryController::getParentsTree($rs->category, $rs->category->title)}}</span>
+                            <span class="cat">{{$category->title}}</span>
                             <p class="price ml-auto">{{$rs->price}}</p>
                         </div>
                         <p class="d-flex mb-0 d-block"><a href="{{route('cars',['id'=> $rs->id])}}" class="btn btn-primary py-2 mr-1">Book now</a> <a href="{{route('cars',['id'=> $rs->id])}}" class="btn btn-secondary py-2 ml-1">Details</a></p>
@@ -38,21 +38,6 @@
             </div>
             @endforeach
             
-            <div class="col-md-4">
-                <div class="car-wrap rounded ftco-animate">
-                    <div class="img rounded d-flex align-items-end" style="background-image: url(images/car-3.jpg);">
-                    </div>
-                    <div class="text">
-                        <h2 class="mb-0"><a href="car-single.html">Mercedes Grand Sedan</a></h2>
-                        <div class="d-flex mb-3">
-                            <span class="cat">Cheverolet</span>
-                            <p class="price ml-auto">$500 <span>/day</span></p>
-                        </div>
-                        <p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Book now</a> <a href="car-single.html" class="btn btn-secondary py-2 ml-1">Details</a></p>
-                    </div>
-                </div>
-            </div>
-
 
         </div>
         <div class="row mt-5">

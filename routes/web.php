@@ -51,9 +51,13 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
+
 //************* ADMIN PANEL ROUTES *************/
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [AdminHomeController::class, 'index'])->name('index');
+    //************* GENERAL ROUTES *************/
+
+    Route::get('/setting', [AdminHomeController::class, 'setting'])->name('setting');
 
     //************* ADMIN CATEGORY ROUTES *************/
     Route::prefix('/category')->name('category.')->controller(AdminCategoryController::class)->group(function () {
