@@ -41,31 +41,25 @@
                 <!-- tabs list -->
 
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
-        <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="general-tab" data-bs-toggle="tab" data-bs-target="#general" type="button"
-                role="tab" aria-controls="general" aria-selected="true">General</button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" id="smtp-tab" data-bs-toggle="tab" data-bs-target="#smtp" type="button" role="tab"
-                aria-controls="smtp" aria-selected="false">Smtp Server</button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" id="social-tab" data-bs-toggle="tab" data-bs-target="#socialmedia" type="button"
-                role="tab" aria-controls="socialmedia" aria-selected="false">Social Media</button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" id="aboutus-tab" data-bs-toggle="tab" data-bs-target="#aboutus" type="button"
-                role="tab" aria-controls="aboutus" aria-selected="false">About Us</button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button"
-                role="tab" aria-controls="contact" aria-selected="false">Contact Page</button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" id="references-tab" data-bs-toggle="tab" data-bs-target="#references"
-                type="button" role="tab" aria-controls="references" aria-selected="false">References</button>
-        </li>
-    </ul>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="general-tab" data-bs-toggle="tab" data-bs-target="#general" type="button" role="tab" aria-controls="general" aria-selected="true">General</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="smtp-tab" data-bs-toggle="tab" data-bs-target="#smtp" type="button" role="tab" aria-controls="smtp" aria-selected="false">Smtp Server</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="social-tab" data-bs-toggle="tab" data-bs-target="#socialmedia" type="button" role="tab" aria-controls="socialmedia" aria-selected="false">Social Media</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="aboutus-tab" data-bs-toggle="tab" data-bs-target="#aboutus" type="button" role="tab" aria-controls="aboutus" aria-selected="false">About Us</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Contact Page</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="references-tab" data-bs-toggle="tab" data-bs-target="#references" type="button" role="tab" aria-controls="references" aria-selected="false">References</button>
+                    </li>
+                </ul>
                 <!--general tab-->
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="general" role="tabpanel" aria-labelledby="general-tab">
@@ -154,7 +148,6 @@
                                     <input type="number" class="form-control" name="smtpport" value="{{ $data->smtpport }}" placeholder="Smtp Port">
                                 </div>
                                 <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                                </form>
                             </div>
                         </div>
                     </div>
@@ -192,49 +185,47 @@
                     <!------aboutus------>
 
                     <div class="tab-pane fade" id="aboutus" role="tabpanel" aria-labelledby="aboutus-tab">
-            <div class="card">
-                <div class="card-body">
+                        <div class="card">
+                            <div class="card-body">
 
-                    <div class="form-group">
-                        <label for="aboutus">About Us</label>
-                        <textarea class="form-control" id="detail1" name="aboutus">{{ $data->aboutus }}</textarea>
+                                <div class="form-group">
+                                    <label for="aboutus">About Us</label>
+                                    <textarea class="form-control" id="detail1" name="aboutus">{{ $data->aboutus }}</textarea>
 
-                        <script>
-                            ClassicEditor
-                                .create(document.querySelector('#detail1'))
-                                .then(editor => {
-                                    console.log(editor);
-                                })
-                                .catch(error => {
-                                    console.error(error);
-                                });
-                        </script>
+                                    <script>
+                                        ClassicEditor
+                                            .create(document.querySelector('#detail1'))
+                                            .then(editor => {
+                                                console.log(editor);
+                                            })
+                                            .catch(error => {
+                                                console.error(error);
+                                            });
+                                    </script>
+                                </div>
+                                <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                            </div>
+                        </div>
                     </div>
-                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                </div>
-            </div>
-        </div>
                     <!----contactpage-->
 
                     <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                         <div class="card">
                             <div class="card-body">
-                                <form class="forms-sample">
-                                    <div class="form-group">
-                                        <label for="contact">Contact Page</label>
-                                        <textarea class="form-control" id="detail2" name="contact">{{ $data->contact }}</textarea>
-                                        <script>
-                                            ClassicEditor
-                                                .create(document.querySelector('#detail2'))
-                                                .then(editor => {
-                                                    console.log(editor);
-                                                })
-                                                .catch(error => {
-                                                    console.error(error);
-                                                });
-                                        </script>
-                                    </div>
-                                </form>
+                                <div class="form-group">
+                                    <label for="contact">Contact Page</label>
+                                    <textarea class="form-control" id="detail2" name="contact">{{ $data->contact }}</textarea>
+                                    <script>
+                                        ClassicEditor
+                                            .create(document.querySelector('#detail2'))
+                                            .then(editor => {
+                                                console.log(editor);
+                                            })
+                                            .catch(error => {
+                                                console.error(error);
+                                            });
+                                    </script>
+                                </div>
                                 <button type="submit" class="btn btn-primary mr-2">Submit</button>
 
                             </div>

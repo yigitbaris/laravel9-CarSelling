@@ -40,6 +40,7 @@ class HomeController extends Controller
         $data->email = $request->input('email');
         $data->smtpserver = $request->input('smtpserver');
         $data->smtpemail = $request->input('smtpemail');
+        $data->smtppassword = $request->input('smtppassword');
         $data->smtpport = $request->input('smtpport');
         $data->facebook = $request->input('facebook');
         $data->instagram = $request->input('instagram');
