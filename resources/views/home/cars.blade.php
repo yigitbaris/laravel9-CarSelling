@@ -140,7 +140,7 @@
     <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start">
             <div class="col-md-9 ftco-animate pb-5">
-                <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>{{$data->title}} <i class="ion-ios-arrow-forward"></i></span></p>
+                <p class="breadcrumbs"><span class="mr-2"><a href="{{route('home')}}">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>{{$data->title}} <i class="ion-ios-arrow-forward"></i></span></p>
                 <h1 class="mb-3 bread">{{$data->title}} Details</h1>
             </div>
         </div>
@@ -176,9 +176,9 @@
 
                     <div class="slide_buttons">
                     </div>
-<br>
-<br>
-<br>
+                    <br>
+                    <br>
+                    <br>
 
                     <div class="">
                         <div class="previous_btn" title="Previous">
@@ -205,7 +205,7 @@
                     </div><!-- End // .directional_nav -->
                     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
                     <!-- deneme alanı -->
-                    
+
                     <div class="text text-center">
                         <span class="subheading">{{$data->category->title}}</span>
                         <h2>{{$data->title}}</h2>

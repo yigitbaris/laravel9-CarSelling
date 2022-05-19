@@ -6,6 +6,8 @@ use App\Http\Controllers\AdminPanel\HomeController as AdminHomeController;
 use App\Http\Controllers\AdminPanel\CategoryController as AdminCategoryController;
 use App\Http\Controllers\AdminPanel\AdminCarsController as AdminCarsController;
 use App\Http\Controllers\AdminPanel\ImageController as ImageController;
+use App\Http\Controllers\AdminPanel\MessageController as MessageController;
+
 
 
 /*
@@ -30,8 +32,13 @@ Route::get('/welcome', function () {
     return view('welcome');
 });
 
-// 3 call controller function
+//************* HOME PAGE ROUTES *************/
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/about', [HomeController::class, 'about'])->name('about');
+Route::get('/references', [HomeController::class, 'references'])->name('references');
+Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::post('/storemessage', [HomeController::class, 'storemessage'])->name('storemessage');
+
 
 // 4 route -> controller -> view
 Route::get('/test', [HomeController::class, 'test'])->name('test');
@@ -88,5 +95,14 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/{cid}', 'index')->name('index');
         Route::post('/store/{cid}', 'store')->name('store');
         Route::get('/destroy/{cid}/{id}', 'destroy')->name('destroy');
+    });
+
+    //************* ADMIN MESSAGE ROUTES *************/
+
+    Route::prefix('/message')->name('message.')->controller(MessageController::class)->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/show/{id}', 'show')->name('show');
+        Route::post('/update/{id}', 'update')->name('update');
+        Route::get('/destroy/{id}', 'destroy')->name('destroy');
     });
 });
