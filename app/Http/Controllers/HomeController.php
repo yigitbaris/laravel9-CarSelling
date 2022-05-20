@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Cars;
+use App\Models\Faq;
 use App\Models\Setting;
 use App\Models\Message;
 use Illuminate\Http\Request;
@@ -63,6 +64,16 @@ class HomeController extends Controller
         $data->save();
 
         return redirect()->route('contact')->with('info','Your message has been sent Thank You.');
+    }
+
+    public function faq()
+    {
+        $setting= Setting::first();
+        $datalist= Faq::all();
+        return  view('home.faq', [
+            'setting' => $setting,
+            'datalist' => $datalist
+        ]);
     }
 
     public function contact()

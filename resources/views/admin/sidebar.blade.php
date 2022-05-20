@@ -26,6 +26,9 @@
                         <a class="nav-link" href="/admin/comment" aria-expanded="false"><i class=" far fa-comments"></i>Comments</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href=" {{route('admin.faq.index')}} " aria-expanded="false"><i class="fas fa-question"></i>FAQ</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href=" {{route('admin.message.index')}} " aria-expanded="false"><i class="far fa-envelope"></i>Messages</a>
                     </li>
                     
@@ -33,18 +36,14 @@
                         <a class="nav-link" href="/admin/user" aria-expanded="false"><i class="fas fa-users"></i>Users</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin/image" aria-expanded="false"><i class="fas fa-images"></i>Images</a>
+                        <a class="nav-link" href="/admin/social" aria-expanded="false"><i class=" fas fa-comment"></i>Social Media</a>
                     </li>
                     <li class="nav-divider">Labels</li>
                     <li class="nav-item">
                         <a class="nav-link" href="/admin/setting" aria-expanded="false"><i class="fas fa-cogs"></i>Settings</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/admin/social" aria-expanded="false"><i class=" fas fa-comment"></i>Social Media</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/admin/faq/" aria-expanded="false"><i class="fas fa-question"></i>FAQ</a>
-                    </li>
+                    
+                    
 
 
 

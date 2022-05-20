@@ -37,7 +37,6 @@
                 <li class="nav-item active"><a href="{{route('home')}}" class="nav-link">Home</a></li>
                 <li class="nav-item "><a href="{{route('about')}}" class="nav-link">About</a></li>
                 <li class="nav-item "><a href="{{route('references')}}" class="nav-link">References</a></li>
-                <li class="nav-item "><a href="" class="nav-link">Services</a></li>
 
                 <!--deneme alanı -->
                 <nav class="nav-item">
@@ -76,7 +75,7 @@
                 <!--deneme alanı -->
                 <li class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></li>
                 <li class="nav-item"><a href="car.html" class="nav-link">Cars</a></li>
-                <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+                <li class="nav-item"><a href="{{route('faq')}}" class="nav-link">FAQ</a></li>
                 <li class="nav-item"><a href="{{route('contact')}}" class="nav-link">Contact</a></li>
             </ul>
         </div>
