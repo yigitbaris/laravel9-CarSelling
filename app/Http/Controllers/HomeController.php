@@ -5,27 +5,29 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Cars;
+use App\Models\Comment;
 use App\Models\Faq;
 use App\Models\Setting;
 use App\Models\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+
 
 class HomeController extends Controller
 {
-    public static function maincategorylist(){
-        return Category::where('parent_id','=',0)->with('children')->get();
-
-
-    }    
+    public static function maincategorylist()
+    {
+        return Category::where('parent_id', '=', 0)->with('children')->get();
+    }
 
     //
     public function index()
     {
-        $page='home';
+        $page = 'home';
         $sliderdata = Cars::limit(5)->get();
         $carslist1 = Cars::limit(7)->get();
-        $setting= Setting::first();
+        $setting = Setting::first();
 
         return  view('home.index', [
             'page' => $page,
@@ -37,7 +39,7 @@ class HomeController extends Controller
 
     public function about()
     {
-        $setting= Setting::first();
+        $setting = Setting::first();
         return  view('home.about', [
             'setting' => $setting
         ]);
@@ -45,7 +47,7 @@ class HomeController extends Controller
 
     public function references()
     {
-        $setting= Setting::first();
+        $setting = Setting::first();
         return  view('home.references', [
             'setting' => $setting
         ]);
@@ -54,7 +56,7 @@ class HomeController extends Controller
     public function storemessage(Request $request)
     {
         //dd($request);
-        $data=new Message();
+        $data = new Message();
         $data->name = $request->input('name');
         $data->email = $request->input('email');
         $data->phone = $request->input('phone');
@@ -63,13 +65,28 @@ class HomeController extends Controller
         $data->ip = request()->ip();
         $data->save();
 
-        return redirect()->route('contact')->with('info','Your message has been sent Thank You.');
+        return redirect()->route('contact')->with('info', 'Your message has been sent Thank You.');
+    }
+
+    public function storecomment(Request $request)
+    {
+        //dd($request);
+        $data = new Comment();
+        $data->user_id = Auth::id();
+        $data->cars_id = $request->input('cars_id');
+        $data->subject = $request->input('subject');
+        $data->review = $request->input('review');
+        $data->rate = $request->input('rate');
+        $data->ip = request()->ip();
+        $data->save();
+
+        return redirect()->route('cars', ['id' => $request->input('cars_id')])->with('success', 'Your comment has been sent Thank You.');
     }
 
     public function faq()
     {
-        $setting= Setting::first();
-        $datalist= Faq::all();
+        $setting = Setting::first();
+        $datalist = Faq::all();
         return  view('home.faq', [
             'setting' => $setting,
             'datalist' => $datalist
@@ -78,7 +95,7 @@ class HomeController extends Controller
 
     public function contact()
     {
-        $setting= Setting::first();
+        $setting = Setting::first();
         return  view('home.contact', [
             'setting' => $setting
         ]);
@@ -88,9 +105,11 @@ class HomeController extends Controller
     {
         $data = Cars::find($id);
         $images = DB::table('images')->where('cars_id', $id)->get();
+        $reviews = Comment::where('cars_id',$id)->where('status','True')->get();
         return  view('home.cars', [
             'data' => $data,
-            'images' => $images
+            'images' => $images,
+            'reviews' => $reviews
         ]);
     }
 
@@ -104,5 +123,4 @@ class HomeController extends Controller
             'cars' => $cars
         ]);
     }
-
 }

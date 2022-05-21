@@ -11,7 +11,7 @@
     <div class="card-body">
       <div class="table-responsive">
         <h5 class="card-header">Detail Message Data</h5>
-        <form role="form" action="{{route('admin.message.update',['id'=>$data->id])}}" method="post">
+        <form role="form" action="{{route('admin.comment.update',['id'=>$data->id])}}" method="post">
           @csrf
           <table class="table table-striped">
             <tr>
@@ -20,23 +20,13 @@
             </tr>
 
             <tr>
+              <th>Car</th>
+              <td>{{$data->cars->title}}</td>
+            </tr>
+
+            <tr>
               <th>Name & Surname</th>
-              <td>{{$data->name}}</td>
-            </tr>
-
-            <tr>
-              <th>Phone Number</th>
-              <td>{{$data->phone}}</td>
-            </tr>
-
-            <tr>
-              <th>Email</th>
-              <td>{{$data->email}}</td>
-            </tr>
-
-            <tr>
-              <th>Message</th>
-              <td>{{$data->message}}</td>
+              <td>{{$data->user->name}}</td>
             </tr>
 
             <tr>
@@ -45,8 +35,18 @@
             </tr>
 
             <tr>
+              <th>Message</th>
+              <td>{{$data->review}}</td>
+            </tr>
+
+            <tr>
+              <th>Rate</th>
+              <td>{{$data->rate}}</td>
+            </tr>
+
+            <tr>
               <th>Ip Number</th>
-              <td>{{$data->ip}}</td>
+              <td>{{$data->IP}}</td>
             </tr>
 
             <tr>
@@ -67,16 +67,17 @@
             <tr>
               <th>Admin Note</th>
               <td>
-                <form role="form" action="{{route('admin.message.update',['id'=>$data->id])}}" method="post">
+                <form role="form" action="{{route('admin.comment.update',['id'=>$data->id])}}" method="post">
                   @csrf
                   <br>
-
-                  <textarea cols="80" rows="4" id="note" name="note">
-                  {{$data->note}}
-                  </textarea>
-                  <br>                 
+                  <select name="status">
+                    <option>{{$data->status}}</option>
+                    <option>True</option>
+                    <option>False</option>
+                  </select>
                   <br>
-                  <button type="submit" class="btn btn-primary">Update Note</button>
+                  <br>
+                  <button type="submit" class="btn btn-primary">Update Comment</button>
 
                 </form>
               </td>

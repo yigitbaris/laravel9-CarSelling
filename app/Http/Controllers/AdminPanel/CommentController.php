@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\AdminPanel;
 
 use App\Http\Controllers\Controller;
+use App\Models\Comment;
 use Illuminate\Http\Request;
-use App\Models\Message;
 
-class MessageController extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class MessageController extends Controller
      */
     public function index()
     {
-        $data = Message::all();
-        return view('admin.message.index',[
+        $data = Comment::all();
+        return view('admin.comment.index',[
             'data' => $data
         ]);
     }
@@ -50,13 +50,10 @@ class MessageController extends Controller
      */
     public function show($id)
     {
-        $data = Message::find($id);
-        $data->status='Read';
-        $data->save();
-        return view('admin.message.show', [
+        $data = Comment::find($id);
+        return view('admin.comment.show', [
             'data' => $data
-        ]);
-    }
+        ]);    }
 
     /**
      * Show the form for editing the specified resource.
@@ -78,12 +75,10 @@ class MessageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = Message::find($id);
-        $data->note = $request->note;
+        $data = Comment::find($id);
+        $data->status = $request->status;
         $data->save();
-        return redirect(route('admin.message.show',['id'=>$id]));
-
-    }
+        return redirect(route('admin.comment.show',['id'=>$id]));    }
 
     /**
      * Remove the specified resource from storage.
@@ -94,8 +89,5 @@ class MessageController extends Controller
     public function destroy($id)
     {
         //
-        $data = Message::find($id);
-        $data->delete();
-        return redirect(route('admin.message.index'));
     }
 }
