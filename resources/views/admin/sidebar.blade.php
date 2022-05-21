@@ -10,6 +10,12 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav flex-column">
+                <li class="nav-divider">
+                    
+                <p><img src="http://127.0.0.1:8000/assets/images/user3.png" alt="" class="user-avatar-md rounded-circle">&nbsp;{{Auth::user()->name}}</p>
+                    </li>
+                
+
                     <li class="nav-divider">
                         Menu
                     </li>

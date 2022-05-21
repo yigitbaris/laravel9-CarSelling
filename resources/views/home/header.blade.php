@@ -23,7 +23,7 @@
 <!-- ----------------------------- -->
 
 
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="viewport" content="width=device-width" />
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container">
         <a class="navbar-brand" href="{{route('home')}}">Car<span>Book</span></a>
@@ -44,14 +44,14 @@
                         <ul class="navbar-nav">
                             <!-- Dropdown -->
                             @php
-                                $mainCategories=\App\Http\Controllers\HomeController::maincategorylist()
+                            $mainCategories=\App\Http\Controllers\HomeController::maincategorylist()
                             @endphp
 
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
                                     Category
                                 </a>
-                                
+
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                     @foreach($mainCategories as $rs)
                                     <li class="nav-item dropdown">
@@ -60,14 +60,14 @@
                                         </a>
                                         <ul class="dropdown-menu dropdown-submenu">
 
-                                                    @if(count($rs->children))
-                                                    @include('home.categorytree',['children'=>$rs->children])
-                                                    @endif
+                                            @if(count($rs->children))
+                                            @include('home.categorytree',['children'=>$rs->children])
+                                            @endif
                                         </ul>
                                     </li>
                                     @endforeach
                                 </ul>
-                                
+
                             </li>
                         </ul>
                     </div>
@@ -77,6 +77,32 @@
                 <li class="nav-item"><a href="car.html" class="nav-link">Cars</a></li>
                 <li class="nav-item"><a href="{{route('faq')}}" class="nav-link">FAQ</a></li>
                 <li class="nav-item"><a href="{{route('contact')}}" class="nav-link">Contact</a></li>
+                <li class="nav-item">
+
+                    <!--user giriş -->
+                <li class="nav-item dropdown nav-user">
+                    <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="http://127.0.0.1:8000/assets/images/user3.png" alt="" class="user-avatar-md rounded-circle"></a>
+                    <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
+                        @auth
+                        <div class="nav-user-info">
+                            <h5 class="mb-0 text-white nav-user-name">{{Auth::user()->name}}</h5>
+                            <span class="status"></span><span class="ml-2">Available</span>
+                        </div>
+                        <a class="dropdown-item" href="/logoutuser"><i class="fas fa-power-off mr-2"></i>Logout</a>
+
+                        @endauth
+
+                        @guest
+                        <a class="dropdown-item" href="/loginuser"><i class="fas fa-power-off mr-2"></i>Login</a>
+                        <a class="dropdown-item" href="/registeruser"><i class="fas fa-power-off mr-2"></i>Join</a>
+                        @endguest
+                        <a class="dropdown-item" href="/#"><i class="fas fa-user mr-2"></i>Account</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Setting</a>
+                    </div>
+                    </a>
+                </li>
+                </li>
+
             </ul>
         </div>
     </div>

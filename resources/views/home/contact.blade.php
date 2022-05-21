@@ -4,6 +4,7 @@
 @section('description', $setting->description)
 @section('keywords', $setting->keywords)
 @section('icon', Storage::url($setting->icon))
+
 @section('content')
 
 <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('{{asset('assets')}}/images/bg_3.jpg');" data-stellar-background-ratio="0.5">

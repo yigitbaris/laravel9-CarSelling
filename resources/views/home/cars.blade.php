@@ -304,7 +304,7 @@
                                 <a class="nav-link" id="pills-manufacturer-tab" data-toggle="pill" href="#pills-manufacturer" role="tab" aria-controls="pills-manufacturer" aria-expanded="true">Description</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="pills-review-tab" data-toggle="pill" href="#pills-review" role="tab" aria-controls="pills-review" aria-expanded="true">Review</a>
+                                <a class="nav-link" id="pills-review-tab" data-toggle="pill" href="#pills-review" role="tab" aria-controls="pills-review" aria-expanded="true">Reviews &nbsp;({{$data->comment->count('id')}})</a>
                             </li>
                         </ul>
                     </div>
@@ -351,7 +351,7 @@
                             <div class="row">
                                 <div class="col-md-7">
 
-                                    <h3 class="head">23 Reviews</h3>
+                                    <h3 class="head">{{$data->comment->count('id')}} Review(s)</h3>
 
                                     
                                     @foreach($reviews as $rs)
@@ -365,11 +365,9 @@
                                             <p class="star">
                                                 <span>
                                                     <!--CSS MASTERLARA SOR -->
-                                                    <i class="ion-ios-star" @if ($rs->rate<1) @endif></i>
-                                                    <i class="ion-ios-star"@if ($rs->rate<2) @endif></i>
-                                                    <i class="ion-ios-star"@if ($rs->rate<3) @endif></i>
-                                                    <i class="ion-ios-star"@if ($rs->rate<4) @endif></i>
-                                                    <i class="ion-ios-star"@if ($rs->rate<5) @endif></i>
+                                                    @for($row=1;$row<=$rs->rate;$row++)
+                                                    <i class="ion-ios-star"></i>
+                                                    @endfor
                                                 </span>
                                                 <span class="text-right"><a href="#" class="reply"><i class="icon-reply"></i></a></span>
                                             </p>
@@ -383,61 +381,20 @@
                                     <div class="rating-wrap">
                                         <h3 class="head">Give a Review</h3>
                                         <div class="wrap">
+                                            @php
+                                                $average = $data->comment->average('rate')
+                                            @endphp
+                                            <strong>Average : </strong><span>{{$average}}</span>
                                             <p class="star">
                                                 <span>
+                                                @for($row2=1;$row2<=$average;$row2++)
                                                     <i class="ion-ios-star"></i>
-                                                    <i class="ion-ios-star"></i>
-                                                    <i class="ion-ios-star"></i>
-                                                    <i class="ion-ios-star"></i>
-                                                    <i class="ion-ios-star"></i>
-                                                    (98%)
+                                                    @endfor
                                                 </span>
-                                                <span>20 Reviews</span>
+                                                <span>{{$data->comment->count('id')}} Reviews</span>
                                             </p>
-                                            <p class="star">
-                                                <span>
-                                                    <i class="ion-ios-star"></i>
-                                                    <i class="ion-ios-star"></i>
-                                                    <i class="ion-ios-star"></i>
-                                                    <i class="ion-ios-star"></i>
-                                                    <i class="ion-ios-star"></i>
-                                                    (85%)
-                                                </span>
-                                                <span>10 Reviews</span>
-                                            </p>
-                                            <p class="star">
-                                                <span>
-                                                    <i class="ion-ios-star"></i>
-                                                    <i class="ion-ios-star"></i>
-                                                    <i class="ion-ios-star"></i>
-                                                    <i class="ion-ios-star"></i>
-                                                    <i class="ion-ios-star"></i>
-                                                    (70%)
-                                                </span>
-                                                <span>5 Reviews</span>
-                                            </p>
-                                            <p class="star">
-                                                <span>
-                                                    <i class="ion-ios-star"></i>
-                                                    <i class="ion-ios-star"></i>
-                                                    <i class="ion-ios-star"></i>
-                                                    <i class="ion-ios-star"></i>
-                                                    <i class="ion-ios-star"></i>
-                                                    (10%)
-                                                </span>
-                                                <span>0 Reviews</span>
-                                            </p>
-                                            <p class="star">
-                                                <span>
-                                                    <i class="ion-ios-star"></i>
-                                                    <i class="ion-ios-star"></i>
-                                                    <i class="ion-ios-star"></i>
-                                                    <i class="ion-ios-star"></i>
-                                                    <i class="ion-ios-star"></i>
-                                                    (0%)
-                                                </span>
-                                                <span>0 Reviews</span>
-                                            </p>
+
+                                            
                                         </div>
                                     </div>
                                 </div>

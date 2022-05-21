@@ -33,10 +33,14 @@
   <link rel="stylesheet" href="{{asset('assets')}}/css/style.css">
 
 
-  <!-- dropdown menu -->
+  <!-- admin -->
+  <link rel="stylesheet" href="{{asset('assets')}}/admin/assets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{asset('assets')}}/admin/assets/vendor/fonts/circular-std/style.css">
+    <link rel="stylesheet" href="{{asset('assets')}}/admin/assets/libs/css/style.css">
+    <link rel="stylesheet" href="{{asset('assets')}}/admin/assets/vendor/fonts/fontawesome/css/fontawesome-all.css">
 
 
-  <!-- dropdown menu -->
+  <!--  -->
 
   @yield("head")
 </head>

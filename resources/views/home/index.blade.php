@@ -26,14 +26,22 @@
         <div class="carousel-car owl-carousel">
 
           @foreach($sliderdata as $rs)
+
+          @php
+          $average = $rs->comment->average('rate')
+          @endphp
+
           <div class="item">
             <div class="car-wrap rounded ftco-animate">
               <div class="img rounded d-flex align-items-end" style="background-image: url({{Storage::url($rs->image)}});width:350px;height:270px;"></div>
               <div class="text">
+                <h6>@if($average!=0)Average : @for($row2=1;$row2<=$average;$row2++)<i class="ion-ios-star"></i> @endfor &nbsp;( {{$average}} )@endif&nbsp;&nbsp;&nbsp; {{$rs->comment->count('id')}} Reviews</h6>
+
                 <h2 class="mb-0"><a href="#">{{$rs->title}}</a></h2>
                 <div class="d-flex mb-3">
                   <span class="cat">{{\App\Http\Controllers\AdminPanel\CategoryController::getParentsTree($rs->category, $rs->category->title)}}</span>
                   <p class="price ml-auto">${{$rs->price}}</p>
+
                 </div>
                 <p class="d-flex mb-0 d-block"> <a href="{{route('cars',['id'=> $rs->id])}}" class="btn btn-secondary py-2 ml-1">Details</a></p>
               </div>

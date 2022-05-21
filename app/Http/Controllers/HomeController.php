@@ -105,7 +105,7 @@ class HomeController extends Controller
     {
         $data = Cars::find($id);
         $images = DB::table('images')->where('cars_id', $id)->get();
-        $reviews = Comment::where('cars_id',$id)->where('status','True')->get();
+        $reviews = Comment::where('cars_id', $id)->where('status', 'True')->get();
         return  view('home.cars', [
             'data' => $data,
             'images' => $images,
@@ -122,5 +122,31 @@ class HomeController extends Controller
             'category' => $category,
             'cars' => $cars
         ]);
+    }
+
+    public function Logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/');
+    }
+
+    public function loginadmincheck(Request $request)
+    {
+        //dd($request);
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+
+            return redirect()->intended('/admin');
+        }
+        return back()->withErrors([
+            'error' => 'The provided credentials do not match our records.'
+        ])->onlyInput('email');
     }
 }
