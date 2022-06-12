@@ -10,6 +10,10 @@ use App\Http\Controllers\AdminPanel\MessageController as MessageController;
 use App\Http\Controllers\AdminPanel\FaqController as FaqController;
 use App\Http\Controllers\AdminPanel\CommentController as CommentController;
 use App\Http\Controllers\AdminPanel\AdminUserController ;
+use App\Http\Controllers\AdminPanel\BrandController ;
+use App\Http\Controllers\UserController ;
+
+
 
 
 
@@ -45,13 +49,11 @@ Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::post('/storemessage', [HomeController::class, 'storemessage'])->name('storemessage');
 Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
 Route::post('/storecomment', [HomeController::class, 'storecomment'])->name('storecomment');
-Route::view('/loginuser','home.login');
-Route::view('/registeruser','home.register');
+Route::view('/loginuser','home.login')->name('loginuser');
+Route::view('/registeruser','home.register')->name('registeruser');
 Route::get('/logoutuser',[HomeController::class, 'logout'])->name('storecomment');
-Route::view('/loginadmin','admin.login');
+Route::view('/loginadmin','admin.login')->name('loginadmin');
 Route::post('/loginadmincheck',[HomeController::class, 'loginadmincheck'])->name('loginadmincheck');
-
-
 
 
 // 4 route -> controller -> view
@@ -72,9 +74,27 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
+//************* USER auth CONTROL*************/
+Route::middleware('auth')->group(function(){
+
+    //************* USER panel ROUTES *************/
+    Route::prefix('userpanel')->name('userpanel.')->controller(UserController::class)->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/reviews', 'reviews')->name('reviews');
+        Route::get('/reviewdestroy/{id}', 'reviewdestroy')->name('reviewdestroy');
+        Route::get('/usercar', 'usercar')->name('usercar');
+        Route::get('/createcars', 'createcars')->name('createcars');
+        Route::post('/storecars', 'storecars')->name('storecars');
+        Route::post('/storeimage/{cid}', 'storeimage')->name('storeimage');
+        Route::get('/carsdestroy/{id}', 'carsdestroy')->name('carsdestroy');
+        Route::get('/editcars/{id}', 'editcars')->name('editcars');
+        Route::post('/updatecars/{id}', 'updatecars')->name('updatecars');
+        Route::get('/imagegallery/{id}', 'imagegallery')->name('imagegallery');
+
+    });
 
 //************* ADMIN PANEL ROUTES *************/
-Route::prefix('admin')->name('admin.')->group(function () {
+Route::middleware('admin')->prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [AdminHomeController::class, 'index'])->name('index');
     //************* GENERAL ROUTES *************/
     Route::get('/setting', [AdminHomeController::class, 'setting'])->name('setting');
@@ -103,6 +123,18 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/show/{id}', 'show')->name('show');
     });
 
+    //************* ADMIN BRAND ROUTES *************/
+
+    Route::prefix('/brand')->name('brand.')->controller(BrandController::class)->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/create', 'create')->name('create');
+        Route::post('/store', 'store')->name('store');
+        Route::get('/edit/{id}', 'edit')->name('edit');
+        Route::post('/update/{id}', 'update')->name('update');
+        Route::get('/destroy/{id}', 'destroy')->name('destroy');
+        Route::get('/show/{id}', 'show')->name('show');
+    });
+
     //************* ADMIN CARS IMAGE GALLERY ROUTES *************/
 
     Route::prefix('/image')->name('image.')->controller(ImageController::class)->group(function () {
@@ -110,6 +142,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/store/{cid}', 'store')->name('store');
         Route::get('/destroy/{cid}/{id}', 'destroy')->name('destroy');
     });
+    
 
     //************* ADMIN MESSAGE ROUTES *************/
 
@@ -149,5 +182,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/show/{id}', 'show')->name('show');
         Route::post('/update/{id}', 'update')->name('update');
         Route::get('/destroy/{id}', 'destroy')->name('destroy');
+        Route::post('/addrole/{id}', 'addrole')->name('addrole');
+        Route::get('/destroyrole/{uid}/{rid}', 'destroyrole')->name('destroyrole');
+
+
+    });
     });
 });

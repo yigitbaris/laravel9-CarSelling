@@ -3,15 +3,14 @@
 namespace App\Http\Controllers\AdminPanel;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Cars;
 use App\Models\Brand;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class AdminCarsController extends Controller
+class BrandController extends Controller
 {
-
 
     /**
      * Display a listing of the resource.
@@ -20,8 +19,8 @@ class AdminCarsController extends Controller
      */
     public function index()
     {
-        $data = Cars::all();
-        return view('admin.cars.index',[
+        $data = Brand::all();
+        return view('admin.brand.index',[
             'data' => $data
         ]);
     }
@@ -33,8 +32,8 @@ class AdminCarsController extends Controller
      */
     public function create()
     {
-        $data = Category::all();
-        return view('admin.cars.create', [
+        $data = Brand::all();
+        return view('admin.brand.create', [
             'data' => $data
         ]);
     }
@@ -48,26 +47,17 @@ class AdminCarsController extends Controller
     public function store(Request $request)
     {
         //
-        $data = new Cars();
-        $data->category_id = $request->category_id;
-        $data->user_id = 0; //$request->category_id;
-        $data->brand_id = $request->brand_id;
+        $data = new Brand();
         $data->title = $request->title;
         $data->keywords = $request->keywords;
         $data->description = $request->description;
-        $data->detail = $request->detail;
-        $data->price = $request->price;
-        $data->year = $request->year;
-        $data->fuel = $request->fuel;
-        $data->kilometer = $request->kilometer;
-        $data->enginepower = $request->enginepower;
         $data->image = $request->image;
         $data->status = $request->status;
         if ($request->file('image')) {
             $data->image = $request->file('image')->store('images');
         }
         $data->save();
-        return redirect('admin/cars');
+        return redirect('admin/brand');
     }
     /**
      * Display the specified resource.
@@ -75,11 +65,11 @@ class AdminCarsController extends Controller
      * @param  \App\Models\Cars  $cars
      * @return \Illuminate\Http\Response
      */
-    public function show(Cars $cars, $id)
+    public function show(Brand $brands, $id)
     {
         //
-        $data = Cars::find($id);
-        return view('admin.cars.show', [
+        $data = Brand::find($id);
+        return view('admin.brand.show', [
             'data' => $data
         ]);
     }
@@ -90,12 +80,12 @@ class AdminCarsController extends Controller
      * @param  \App\Models\Cars  $cars
      * @return \Illuminate\Http\Response
      */
-    public function edit(Cars $cars, $id)
+    public function edit(Brand $brands, $id)
     {
         //
-        $data = Cars::find($id);
+        $data = Brand::find($id);
         $datalist = Category::all();
-        return view('admin.cars.edit', [
+        return view('admin.brand.edit', [
             'data' => $data,
             'datalist' =>  $datalist
         ]);
@@ -108,29 +98,20 @@ class AdminCarsController extends Controller
      * @param  \App\Models\Cars $cars
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cars $cars, $id)
+    public function update(Request $request, Brand $brands, $id)
     {
         //
-        $data = Cars::find($id);
-        $data->category_id = $request->category_id;
-        $data->user_id = 0; //$request->category_id;
-        $data->brand_id = $request->brand_id;
+        $data = Brand::find($id);
         $data->title = $request->title;
         $data->keywords = $request->keywords;
         $data->description = $request->description;
-        $data->detail = $request->detail;
-        $data->price = $request->price;
-        $data->year = $request->year;
-        $data->fuel = $request->fuel;
-        $data->kilometer = $request->kilometer;
-        $data->enginepower = $request->enginepower;
         $data->image = $request->image;
         $data->status = $request->status;
         if ($request->file('image')) {
             $data->image = $request->file('image')->store('images');
         }
         $data->save();
-        return redirect('admin/cars');
+        return redirect('admin/brand');
     }
 
     /**
@@ -139,15 +120,16 @@ class AdminCarsController extends Controller
      * @param  \App\Models\Cars  $cars
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cars $cars, $id)
+    public function destroy(Brand $brands, $id)
     {
         //
-        $data = Cars::find($id);
+        $data = Brand::find($id);
         if($data->image && Storage::disk('public')->exists($data->image)){
             Storage::delete($data->image);
         }
         
         $data->delete();
-        return redirect('admin/cars');
+        return redirect('admin/brand');
     }
+
 }

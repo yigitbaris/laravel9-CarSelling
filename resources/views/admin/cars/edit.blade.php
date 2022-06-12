@@ -32,6 +32,14 @@
                                 </label>
                                 <input type="text" class="form-control" name="title" value="{{$data->title}}">
                             </div>
+                            
+                            <div class="form-group">
+                                <label for="exampleInputName1">
+                                    <h4 class="card-title">Brand</h4>
+                                </label>
+                                <input type="number" class="form-control" name="brand_id" value="{{$data->brad_id}}">
+                            </div>
+
                             <div class="form-group">
                                 <label for="exampleInputEmail3">
                                     <h4 class="card-title">Keywords</h4>

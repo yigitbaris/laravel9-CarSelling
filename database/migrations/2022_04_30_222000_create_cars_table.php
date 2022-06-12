@@ -18,6 +18,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('category_id')->nullable();
             $table->foreignId('user_id')->nullable();
+            $table->foreignId('brand_id')->nullable();
             $table->string('title');
             $table->string('keywords')->nullable();
             $table->string('description')->nullable();

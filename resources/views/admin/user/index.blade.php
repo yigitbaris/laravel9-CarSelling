@@ -28,16 +28,20 @@
 							<td>{{$rs->id}}</td>
 							<td>{{$rs->name}}</td>
 							<td>{{$rs->email}}</td>
-							<td></td>
+							<td>
+								@foreach ($rs->roles as $role)
+									{{$role->name}}
+								@endforeach
+							</td>
 							<td></td>
 
 							<td>
-								<a href="{{route('admin.message.show',['id'=>$rs->id])}}"  class="btn btn-info"
+								<a href="{{route('admin.user.show',['id'=>$rs->id])}}"  class="btn btn-info"
 									onclick="return !window.open(this.href, '','top=50 left=100 width=700,height=620')">
 									Show
 								</a>
 							</td>
-							<td><a href="{{route('admin.message.destroy',['id'=>$rs->id])}}" class="btn btn-danger" onclick="return confirm('Deleting {{$rs->title}}!! Are you sure?')">Delete </a></td>
+							<td><a href="{{route('admin.user.destroy',['id'=>$rs->id])}}" class="btn btn-danger" onclick="return confirm('Deleting {{$rs->title}}!! Are you sure?')">Delete </a></td>
 							
 						</tr>
 

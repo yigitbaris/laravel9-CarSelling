@@ -5,6 +5,12 @@ namespace App\Http\Controllers\AdminPanel;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Message;
+use App\Models\Role;
+use App\Models\RoleUser;
+
+
+
 
 
 class AdminUserController extends Controller
@@ -51,7 +57,31 @@ class AdminUserController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = User::find($id);
+        $roles = Role::all();
+
+        return view('admin.user.show',[
+            'data' => $data,
+            'roles' => $roles
+
+        ]);
+    }
+
+        /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+     public function addrole(Request $request, $id)
+    {
+        $data = new RoleUser();
+        $data->user_id=$id;
+        $data->role_id=$request->role_id;
+        $data->save();
+        return redirect(route('admin.user.show',['id'=>$id]));
+
     }
 
     /**
@@ -77,14 +107,16 @@ class AdminUserController extends Controller
         //
     }
 
-    /**
+      /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int  $uid
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+     public function destroyrole($uid,$rid)
     {
-        //
+        $user = User::find($uid);
+        $user->roles()->detach($rid);#many to many
+        return redirect(route('admin.user.show',['id'=>$uid]));
     }
 }

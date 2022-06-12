@@ -26,7 +26,7 @@
 <meta name="viewport" content="width=device-width" />
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container">
-        <a class="navbar-brand" href="{{route('home')}}">Car<span>Book</span></a>
+        <a class="navbar-brand" href="{{route('home')}}">FromThe<span>Owner</span></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="oi oi-menu"> Menu</span>
         </button>
@@ -73,8 +73,6 @@
                     </div>
                 </nav>
                 <!--deneme alanı -->
-                <li class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></li>
-                <li class="nav-item"><a href="car.html" class="nav-link">Cars</a></li>
                 <li class="nav-item"><a href="{{route('faq')}}" class="nav-link">FAQ</a></li>
                 <li class="nav-item"><a href="{{route('contact')}}" class="nav-link">Contact</a></li>
                 <li class="nav-item">
@@ -96,15 +94,17 @@
                         <a class="dropdown-item" href="/loginuser"><i class="fas fa-power-off mr-2"></i>Login</a>
                         <a class="dropdown-item" href="/registeruser"><i class="fas fa-power-off mr-2"></i>Join</a>
                         @endguest
-                        <a class="dropdown-item" href="/#"><i class="fas fa-user mr-2"></i>Account</a>
-                        <a class="dropdown-item" href="#"><i class="fas fa-cog mr-2"></i>Setting</a>
+                        <a class="dropdown-item" href="{{route('userpanel.index')}}"><i class="fas fa-user mr-2"></i>My Profile</a>
+                        <a class="dropdown-item" href="{{route('userpanel.index')}}"><i class="fas fa-cog mr-2"></i>My Cars</a>
+                        <a class="dropdown-item" href="{{route('userpanel.index')}}"><i class="fas fa-cog mr-2"></i>My Reviews</a>
+
                     </div>
                     </a>
                 </li>
                 </li>
 
             </ul>
-        </div>
+        </div>  
     </div>
 </nav>
 

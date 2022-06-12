@@ -14,6 +14,7 @@
 						<tr>
 							<th scope="col" style="width: 10px;">Id</th>
 							<th scope="col" style="width: 100px;">Category</th>
+							<th scope="col" style="width: 100px;">Brand</th>
 							<th scope="col">Title</th>
 							<th scope="col">Price</th>
 							<th scope="col">Year</th>
@@ -31,8 +32,10 @@
 					<tbody>
 						@foreach ($data as $rs)
 						<tr>
+							
 							<td>{{$rs->id}}</td>
 							<td>{{\App\Http\Controllers\AdminPanel\CategoryController::getParentsTree($rs->category,$rs->category->title)}}</td>
+							<td>{{$rs->brand->title}}</td>
 							<td>{{$rs->title}}</td>
 							<td>{{$rs->price}}</td>
 							<td>{{$rs->year}}</td>

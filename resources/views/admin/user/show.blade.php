@@ -1,6 +1,6 @@
 @extends('layouts.adminwindow')
 
-@section('title', 'Show Message : {{$data->title}}')
+@section('title', 'User Detail : {{$data->title}}')
 
 @section('content')
 <!--content-->
@@ -10,9 +10,8 @@
 
     <div class="card-body">
       <div class="table-responsive">
-        <h5 class="card-header">Detail Message Data</h5>
-        <form role="form" action="{{route('admin.message.update',['id'=>$data->id])}}" method="post">
-          @csrf
+        <h5 class="card-header">Detail User</h5>
+        
           <table class="table table-striped">
             <tr>
               <th>Id</th>
@@ -25,33 +24,17 @@
             </tr>
 
             <tr>
-              <th>Phone Number</th>
-              <td>{{$data->phone}}</td>
-            </tr>
-
-            <tr>
               <th>Email</th>
               <td>{{$data->email}}</td>
             </tr>
 
-            <tr>
-              <th>Message</th>
-              <td>{{$data->message}}</td>
-            </tr>
-
-            <tr>
-              <th>Subject</th>
-              <td>{{$data->subject}}</td>
-            </tr>
-
-            <tr>
-              <th>Ip Number</th>
-              <td>{{$data->ip}}</td>
-            </tr>
-
-            <tr>
-              <th>Status</th>
-              <td>{{$data->status}}</td>
+            <th>Roles</th>
+            <td>
+              @foreach ($data->roles as $role)
+              {{$role->name}}
+              <a href="{{route('admin.user.destroyrole',['uid'=>$data->id,'rid'=>$role->id])}}" class="btn btn-danger" onclick="return confirm('Deleting!! Are you sure?')">[x]</a>
+              @endforeach
+            </td>
             </tr>
 
             <tr>
@@ -62,21 +45,22 @@
             <tr>
               <th>Update Date</th>
               <td>{{$data->updated_at}}</td>
-            </tr>
+            </tr> 
 
             <tr>
-              <th>Admin Note</th>
+              <th>Add Role to User</th>
               <td>
-                <form role="form" action="{{route('admin.message.update',['id'=>$data->id])}}" method="post">
+                <form role="form" action="{{route('admin.user.addrole',['id'=>$data->id])}}" method="post">
                   @csrf
                   <br>
-
-                  <textarea cols="80" rows="4" id="note" name="note">
-                  {{$data->note}}
-                  </textarea>
-                  <br>                 
+                  <select name="role_id">
+                    @foreach ($roles as $role)
+                    <option value="{{$role->id}}">{{$role->name}}</option>
+                    @endforeach
+                  </select>
                   <br>
-                  <button type="submit" class="btn btn-primary">Update Note</button>
+                  <br>
+                  <button type="submit" class="btn btn-primary">Add Role</button>
 
                 </form>
               </td>

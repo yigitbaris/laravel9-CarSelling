@@ -48,6 +48,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/admin/setting" aria-expanded="false"><i class="fas fa-cogs"></i>Settings</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/brand" aria-expanded="false"><i class="fas fa-cogs"></i>Brand</a>
+                    </li>
                     
                     
 
